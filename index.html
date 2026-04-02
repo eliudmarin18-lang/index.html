@@ -2,172 +2,232 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Pregunta importante 💖</title>
+<title>Gallina PRO 🐔</title>
 
 <style>
 body{
     margin:0;
-    font-family: Arial, sans-serif;
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
-    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    flex-direction:column;
+    background:linear-gradient(#87CEEB 70%, #4CAF50 30%);
     overflow:hidden;
-    text-align:center;
+    font-family:Arial;
 }
 
-h1{
-    color:#fff;
-    text-shadow:2px 2px 5px rgba(0,0,0,0.3);
-}
-
-#contenedor{
+/* CONTENEDOR */
+.gallina{
     position:relative;
+    width:220px;
+    height:180px;
+    animation:mover 2s infinite alternate ease-in-out;
 }
 
-button{
-    padding:15px 30px;
-    font-size:20px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    margin:10px;
-    transition:0.3s;
+/* CUERPO */
+.cuerpo{
+    width:140px;
+    height:100px;
+    background:#fff;
+    border-radius:60% 60% 50% 50%;
+    position:absolute;
+    top:50px;
+    left:50px;
+    box-shadow: inset -5px -5px 0 #eaeaea;
 }
 
-#si{
-    background:#4CAF50;
-    color:white;
+/* CABEZA */
+.cabeza{
+    width:60px;
+    height:60px;
+    background:#fff;
+    border-radius:50%;
+    position:absolute;
+    top:20px;
+    left:10px;
+    box-shadow: inset -3px -3px 0 #eaeaea;
 }
 
-#no{
-    background:#f44336;
-    color:white;
+/* CRESTA */
+.cresta{
+    position:absolute;
+    top:-10px;
+    left:15px;
+    width:30px;
+    height:20px;
+    background:red;
+    border-radius:50%;
+    box-shadow:15px 0 red, 30px 0 red;
+}
+
+/* OJO */
+.ojo{
+    width:10px;
+    height:10px;
+    background:black;
+    border-radius:50%;
+    position:absolute;
+    top:25px;
+    left:20px;
+}
+
+/* PICO */
+.pico{
+    position:absolute;
+    top:30px;
+    left:-10px;
+    width:0;
+    height:0;
+    border-left:15px solid orange;
+    border-top:8px solid transparent;
+    border-bottom:8px solid transparent;
+}
+
+/* ALA */
+.ala{
+    width:60px;
+    height:50px;
+    background:#f5f5f5;
+    border-radius:50%;
+    position:absolute;
+    top:80px;
+    left:80px;
+    box-shadow: inset -3px -3px 0 #ddd;
+}
+
+/* COLA */
+.cola{
+    position:absolute;
+    top:50px;
+    right:0;
+    width:50px;
+    height:50px;
+}
+
+.cola div{
+    width:30px;
+    height:30px;
+    background:#fff;
+    border-radius:50%;
     position:absolute;
 }
 
-#final{
+.cola div:nth-child(1){ right:0; top:0; }
+.cola div:nth-child(2){ right:10px; top:10px; }
+.cola div:nth-child(3){ right:20px; top:0; }
+
+/* PATAS */
+.pata{
+    width:6px;
+    height:35px;
+    background:orange;
+    position:absolute;
+    bottom:10px;
+}
+
+.pata1{ left:90px; }
+.pata2{ left:120px; }
+
+/* PIES */
+.pata::after{
+    content:"";
+    position:absolute;
+    bottom:-5px;
+    left:-8px;
+    width:20px;
+    height:5px;
+    background:orange;
+    border-radius:5px;
+}
+
+/* HUEVO */
+.huevo{
+    position:absolute;
+    font-size:40px;
+    right:15px;
+    top:80px;
+    opacity:0;
+    cursor:pointer;
+    transition:1s;
+}
+
+/* SALE DE LA COLA */
+.salir{
+    transform:translateX(40px) translateY(30px);
+    opacity:1;
+}
+
+/* POLLITO */
+.pollito{
+    font-size:90px;
     display:none;
+    margin-top:20px;
+    animation:pop 1s ease;
+}
+
+@keyframes pop{
+    from{transform:scale(0);}
+    to{transform:scale(1);}
+}
+
+/* MENSAJE */
+.mensaje{
+    display:none;
+    font-size:30px;
     color:white;
-    animation:fadeIn 1s ease;
+    text-shadow:2px 2px 5px black;
 }
 
-.flor{
-    font-size:120px;
-    animation:flotar 2s infinite ease-in-out;
-}
-
-@keyframes flotar{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-20px);}
-    100%{transform:translateY(0);}
-}
-
-@keyframes fadeIn{
-    from{opacity:0;}
-    to{opacity:1;}
-}
-
-/* Confeti */
-.confeti{
-    position:fixed;
-    width:10px;
-    height:10px;
-    background:red;
-    top:-10px;
-    animation:caer 3s linear infinite;
-}
-
-@keyframes caer{
-    to{
-        transform:translateY(100vh) rotate(360deg);
-    }
+/* MOVIMIENTO */
+@keyframes mover{
+    from{transform:translateX(-20px);}
+    to{transform:translateX(20px);}
 }
 </style>
 
 </head>
 <body>
 
-<div id="contenedor">
-    <h1>¿Quieres regresar conmigo? 💖</h1>
-    
-    <button id="si">Sí 💘</button>
-    <button id="no">No 😒</button>
+<div class="gallina">
+
+    <div class="cuerpo"></div>
+
+    <div class="cabeza">
+        <div class="cresta"></div>
+        <div class="ojo"></div>
+        <div class="pico"></div>
+    </div>
+
+    <div class="ala"></div>
+
+    <div class="cola">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div class="pata pata1"></div>
+    <div class="pata pata2"></div>
+
+    <div class="huevo" id="huevo" onclick="romper()">🥚</div>
+
 </div>
 
-<div id="final">
-    <h1>No que no aceptabas chaparra 🌸</h1>
-    <div class="flor">🌸</div>
-    <br><br>
-    <button onclick="compartir()">Compartir 😎</button>
-</div>
+<div class="pollito" id="pollito">🐣</div>
+<div class="mensaje" id="mensaje">Te amo berrinches 💛</div>
 
 <script>
-let tamaño = 1;
+setTimeout(()=>{
+    document.getElementById("huevo").classList.add("salir");
+},2000);
 
-// Botón NO que se mueve
-const noBtn = document.getElementById("no");
-
-noBtn.addEventListener("mouseover", () => {
-    let x = Math.random() * (window.innerWidth - 100);
-    let y = Math.random() * (window.innerHeight - 50);
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-});
-
-// También se mueve al hacer clic
-noBtn.addEventListener("click", () => {
-    tamaño += 0.5;
-
-    let botonSi = document.getElementById("si");
-    botonSi.style.transform = "scale(" + tamaño + ")";
-
-    if(tamaño >= 5){
-        botonSi.style.position = "fixed";
-        botonSi.style.top = "0";
-        botonSi.style.left = "0";
-        botonSi.style.width = "100vw";
-        botonSi.style.height = "100vh";
-        botonSi.style.fontSize = "60px";
-    }
-});
-
-// Botón SI
-document.getElementById("si").addEventListener("click", () => {
-    document.getElementById("contenedor").style.display = "none";
-    document.getElementById("final").style.display = "block";
-    lanzarConfeti();
-});
-
-// Confeti 🎉
-function lanzarConfeti(){
-    for(let i=0; i<50; i++){
-        let confeti = document.createElement("div");
-        confeti.classList.add("confeti");
-
-        confeti.style.left = Math.random() * 100 + "vw";
-        confeti.style.background = `hsl(${Math.random()*360},100%,50%)`;
-        confeti.style.animationDuration = (Math.random()*3+2)+"s";
-
-        document.body.appendChild(confeti);
-    }
-}
-
-// Compartir
-function compartir(){
-    if(navigator.share){
-        navigator.share({
-            title: 'Mira esto 😆',
-            text: 'Me aceptó 😂',
-            url: window.location.href
-        });
-    } else {
-        navigator.clipboard.writeText(window.location.href);
-        alert("Link copiado 😎, compártelo donde quieras");
-    }
+function romper(){
+    document.getElementById("huevo").style.display="none";
+    document.getElementById("pollito").style.display="block";
+    document.getElementById("mensaje").style.display="block";
 }
 </script>
 
 </body>
-</html>0
+</html>
